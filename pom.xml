@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+	<groupId>com.anz.authentic</groupId>
+	<artifactId>authentic-anz</artifactId>
+	<version>${revision}</version>
+	<relativePath>../pom.xml</relativePath>
+  </parent>
+
+
+  <artifactId>authentic-anz-product</artifactId>
+  
+  
+
+  <dependencies>
+
+    <!--  DEVOPS  -->
+    <dependency>
+      <groupId>com.anz.authentic</groupId>
+      <artifactId>devops</artifactId>
+      <version>0.0.4</version>
+      <exclusions>
+    	<exclusion>
+    		<groupId>xml-apis</groupId>
+    		<artifactId>xml-apis</artifactId>
+    	</exclusion>
+      </exclusions>
+    </dependency>
+    
+    <!-- <!-\- AUTHENTIC Patches -\-> -->
+    <!-- <dependency> -->
+    <!--   <groupId>com.ncr.authentic.product</groupId> -->
+    <!--   <artifactId>authentic-patch-code</artifactId> -->
+    <!--   <version>5.0.02.01</version> -->
+    <!-- </dependency> -->
+    
+	<dependency> 
+	  <groupId>org.apache.camel</groupId> 
+	  <artifactId>camel-jaxb</artifactId> 
+	</dependency>
+  
+  <dependency>
+    <groupId>com.newrelic.agent.java</groupId>
+    <artifactId>newrelic-api</artifactId>
+    <version>${com.newrelic.agent.version}</version>
+  </dependency>
+  
+  <!-- to be removed after RespondToOrigin is removed" -->
+  <dependency>
+    <groupId>javax.jms</groupId>
+    <artifactId>jms</artifactId>
+    <version>1.1</version>
+  </dependency>
+
+  <dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-config</artifactId>
+	</dependency>
+  
+	<dependency>
+		<groupId>org.apache.httpcomponents</groupId>
+		<artifactId>httpclient</artifactId>
+		<version>4.5</version>
+	</dependency>
+
+	<!--SSN-10678 remove after fixed-->
+	<dependency>
+		<groupId>io.netty</groupId>
+		<artifactId>netty-codec</artifactId>
+    </dependency>
+
+    <!--VMPrelod, remove after-->
+	<dependency>
+	  <groupId>xerces</groupId>
+	  <artifactId>xercesImpl</artifactId>
+	  <version>${xerces.version}</version>
+	</dependency>
+
+    <!-- remove in 5.3 -->
+    <dependency>
+	  <groupId>org.apache.logging.log4j</groupId>
+	  <artifactId>log4j-core</artifactId>
+    </dependency>
+
+    <!-- remove in 5.3 -->
+    <dependency>
+	  <groupId>org.apache.logging.log4j</groupId>
+	  <artifactId>log4j-api</artifactId>
+    </dependency>
+
+	<!--remove in 5.3 begin -->
+	<dependency>
+		<groupId>org.apache.kafka</groupId>
+		<artifactId>kafka-clients</artifactId>
+		<version>${org.apache.kafka.kafka-clients.version}</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka -->
+	<dependency>
+		<groupId>org.apache.kafka</groupId>
+		<artifactId>kafka_2.13</artifactId>
+		<version>${org.apache.kafka.kafka_2.13.version}</version>
+	</dependency>
+
+	<!-- SSN-10265 Avro -->
+	<dependency>
+		<groupId>org.apache.avro</groupId>
+		<artifactId>avro</artifactId>
+		<version>${org.apache.avro.version}</version>
+	</dependency>
+
+	<!-- SSN-10265 kafka-avro-serializer -->
+	<dependency>
+		<groupId>io.confluent</groupId>
+		<artifactId>kafka-avro-serializer</artifactId>
+		<version>${io.confluent.kafka-avro-serializer.version}</version>
+	</dependency>
+
+	<!-- SSN-10265 kafka-schema-serializer -->
+	<dependency>
+		<groupId>io.confluent</groupId>
+		<artifactId>kafka-schema-serializer</artifactId>
+		<version>${io.confluent.kafka-schema-serializer.version}</version>
+	</dependency>
+
+	<!-- SSN-10265 kafka-schema-registry-client -->
+	<dependency>
+		<groupId>io.confluent</groupId>
+		<artifactId>kafka-schema-registry-client</artifactId>
+		<version>${io.confluent.kafka-schema-registry-client.version}</version>
+	</dependency>
+
+	<!-- SSN-10265 avro-maven-plugin -->
+	<dependency>
+		<groupId>org.apache.avro</groupId>
+		<artifactId>avro-maven-plugin</artifactId>
+		<version>${org.apache.avro.avro-maven-plugin.version}</version>
+	</dependency>
+
+	<!-- SSN-10265 jakarta.ws.rs-api -->
+	<dependency>
+		<groupId>jakarta.ws.rs</groupId>
+		<artifactId>jakarta.ws.rs-api</artifactId>
+	</dependency>
+
+	<!-- SSN-10265 jersey-common -->
+	<dependency>
+		<groupId>org.glassfish.jersey.core</groupId>
+		<artifactId>jersey-common</artifactId>
+	</dependency>
+	<!--remove in 5.3 end -->
+
+
+        <!-- AUTHENTIC LIBRARIES -->
+
+        <dependency>
+			<groupId>${authentic.account-card-import.groupid}</groupId>
+			<artifactId>authentic-account-card-import</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.atm.groupid}</groupId>
+			<artifactId>authentic-atm</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.atm-ui.groupid}</groupId>
+			<artifactId>authentic-atm-ui</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.authorisation-ui.groupid}</groupId>
+			<artifactId>authentic-authorisation-ui</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.batch.groupid}</groupId>
+			<artifactId>authentic-batch</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.batch-import.groupid}</groupId>
+			<artifactId>authentic-batch-import</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.common.groupid}</groupId>
+			<artifactId>authentic-common</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.common-mvc.groupid}</groupId>
+			<artifactId>authentic-common-mvc</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.common-ui.groupid}</groupId>
+			<artifactId>authentic-common-ui</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.crypto-client.groupid}</groupId>
+			<artifactId>authentic-crypto-client</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.crypto-common.groupid}</groupId>
+			<artifactId>authentic-crypto-common</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.crypto-service.groupid}</groupId>
+			<artifactId>authentic-crypto-service</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.dao.groupid}</groupId>
+			<artifactId>authentic-dao</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.dao-cassandra.groupid}</groupId>
+			<artifactId>authentic-dao-cassandra</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.desktop-ui.groupid}</groupId>
+			<artifactId>authentic-desktop-ui</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.encryption.groupid}</groupId>
+			<artifactId>authentic-encryption</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.hazelcast.groupid}</groupId>
+			<artifactId>authentic-hazelcast-flighttable</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.jdbc.groupid}</groupId>
+			<artifactId>authentic-jdbc</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.jms-factory.groupid}</groupId>
+			<artifactId>authentic-jms-factory-activemq</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.jms-factory.groupid}</groupId>
+			<artifactId>authentic-jms-factory-ibm-mq</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.jms-factory.groupid}</groupId>
+			<artifactId>authentic-jms-factory-rabbitmq</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.kernel.groupid}</groupId>
+			<artifactId>authentic-kernel</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.logging.groupid}</groupId>
+			<artifactId>authentic-logging</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.message-mapper.groupid}</groupId>
+			<artifactId>authentic-message-mapper</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.message-mapper-ui.groupid}</groupId>
+			<artifactId>authentic-message-mapper-ui</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.operation-ui.groupid}</groupId>
+			<artifactId>authentic-operation-ui</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.persistence.groupid}</groupId>
+			<artifactId>authentic-persistence</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.persistence-cassandra.groupid}</groupId>
+			<artifactId>authentic-persistence-cassandra</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.persistence-common.groupid}</groupId>
+			<artifactId>authentic-persistence-common</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.persistence-rdbms.groupid}</groupId>
+			<artifactId>authentic-persistence-rdbms</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.polyglot.groupid}</groupId>
+			<artifactId>authentic-polyglot</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.pos-driver.groupid}</groupId>
+			<artifactId>authentic-pos-driver</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.property-encryption.groupid}</groupId>
+			<artifactId>authentic-property-encryption</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.property-encryptors.groupid}</groupId>
+			<artifactId>authentic-property-encryptors</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.safreject-cassandra-client.groupid}</groupId>
+			<artifactId>authentic-safreject-cassandra-client</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.safreject-cassandra-common.groupid}</groupId>
+			<artifactId>authentic-safreject-cassandra-common</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.safreject-cassandra-service.groupid}</groupId>
+			<artifactId>authentic-safreject-cassandra-service</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.scheduler.groupid}</groupId>
+			<artifactId>authentic-scheduler</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.security-certificates.groupid}</groupId>
+			<artifactId>authentic-security-certificates</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.security-ui.groupid}</groupId>
+			<artifactId>authentic-security-ui</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.settlement.groupid}</groupId>
+			<artifactId>authentic-settlement</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.settlement-ui.groupid}</groupId>
+			<artifactId>authentic-settlement-ui</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.solr-client.groupid}</groupId>
+			<artifactId>authentic-solr-client</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.services.groupid}</groupId>
+			<artifactId>authentic-services-card-issuance-processor</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.services.groupid}</groupId>
+			<artifactId>authentic-services-card-issuance-transport</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.spring-cloud-client.groupid}</groupId>
+			<artifactId>authentic-spring-cloud-client</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>log4j</groupId>
+					<artifactId>log4j</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.swingui-utils.groupid}</groupId>
+			<artifactId>authentic-swingui-utils</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.system-ui.groupid}</groupId>
+			<artifactId>authentic-system-ui</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.usec-client.groupid}</groupId>
+			<artifactId>authentic-usec-client</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.usec-common.groupid}</groupId>
+			<artifactId>authentic-usec-common</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.usec-service.groupid}</groupId>
+			<artifactId>authentic-usec-service</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.cassandra.groupid}</groupId>
+			<artifactId>authentic-cassandra-dao</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.cassandra.groupid}</groupId>
+			<artifactId>authentic-cassandra-lib</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.services.groupid}</groupId>
+			<artifactId>authentic-services-atm</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.services.groupid}</groupId>
+			<artifactId>authentic-services-atm-cr</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.services.groupid}</groupId>
+			<artifactId>authentic-services-atm-cr-transport</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.services.groupid}</groupId>
+			<artifactId>authentic-services-atm-transport</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.services.groupid}</groupId>
+			<artifactId>authentic-services-client</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.services.groupid}</groupId>
+			<artifactId>authentic-services-client-transport</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.services.groupid}</groupId>
+			<artifactId>authentic-services-common</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.services.groupid}</groupId>
+			<artifactId>authentic-services-encryption</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.services.groupid}</groupId>
+			<artifactId>authentic-services-encryption-transport</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.system-monitor.groupid}</groupId>
+			<artifactId>authentic-system-monitor-aggregator</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.system-monitor.groupid}</groupId>
+			<artifactId>authentic-system-monitor-aggregator-lib</artifactId>
+		</dependency>
+        <dependency>
+			<groupId>${authentic.system-monitor.groupid}</groupId>
+			<artifactId>authentic-system-monitor-transport</artifactId>
+		</dependency>
+        <!-- <dependency> -->
+		<!-- 	<groupId>${authentic.interfaces.groupid}</groupId> -->
+		<!-- 	<artifactId>authentic-interfaces-as2805-codegen</artifactId> -->
+		<!-- </dependency> -->
+        <!-- <dependency> -->
+		<!-- 	<groupId>${authentic.interfaces.groupid}</groupId> -->
+		<!-- 	<artifactId>authentic-interfaces-atmtxnsvc-actions</artifactId> -->
+		<!-- </dependency> -->
+        <!-- <dependency> -->
+		<!-- 	<groupId>${authentic.interfaces.groupid}</groupId> -->
+		<!-- 	<artifactId>authentic-interfaces-atmtxnsvc-transport</artifactId> -->
+		<!-- </dependency> -->
+        <!-- <dependency> -->
+		<!-- 	<groupId>${authentic.interfaces.groupid}</groupId> -->
+		<!-- 	<artifactId>authentic-interfaces-common-actions</artifactId> -->
+		<!-- </dependency> -->
+        <!-- <dependency> -->
+		<!-- 	<groupId>${authentic.interfaces.groupid}</groupId> -->
+		<!-- 	<artifactId>authentic-interfaces-dci-actions</artifactId> -->
+		<!-- </dependency> -->
+        <!-- <dependency> -->
+		<!-- 	<groupId>${authentic.interfaces.groupid}</groupId> -->
+		<!-- 	<artifactId>authentic-interfaces-dci-codegen</artifactId> -->
+		<!-- </dependency> -->
+        <!-- <dependency> -->
+		<!-- 	<groupId>${authentic.interfaces.groupid}</groupId> -->
+		<!-- 	<artifactId>authentic-interfaces-iso20022soap-client</artifactId> -->
+		<!-- </dependency> -->
+        <!-- <dependency> -->
+		<!-- 	<groupId>${authentic.interfaces.groupid}</groupId> -->
+		<!-- 	<artifactId>authentic-interfaces-iso20022soap-transport</artifactId> -->
+		<!-- </dependency> -->
+        <!-- <dependency> -->
+		<!-- 	<groupId>${authentic.interfaces.groupid}</groupId> -->
+		<!-- 	<artifactId>authentic-interfaces-mastercard-mci-codegen</artifactId> -->
+		<!-- </dependency> -->
+        <!-- <dependency> -->
+		<!-- 	<groupId>${authentic.interfaces.groupid}</groupId> -->
+		<!-- 	<artifactId>authentic-interfaces-mastercard-mds-codegen</artifactId> -->
+		<!-- </dependency> -->
+        <!-- <dependency> -->
+		<!-- 	<groupId>${authentic.interfaces.groupid}</groupId> -->
+		<!-- 	<artifactId>authentic-interfaces-std70-actions</artifactId> -->
+		<!-- </dependency> -->
+        <!-- <dependency> -->
+		<!-- 	<groupId>${authentic.interfaces.groupid}</groupId> -->
+		<!-- 	<artifactId>authentic-interfaces-std70-codegen</artifactId> -->
+		<!-- </dependency> -->
+        <!-- <dependency> -->
+		<!-- 	<groupId>${authentic.interfaces.groupid}</groupId> -->
+		<!-- 	<artifactId>authentic-interfaces-upidms-codegen</artifactId> -->
+		<!-- </dependency> -->
+        <!-- <dependency> -->
+		<!-- 	<groupId>${authentic.interfaces.groupid}</groupId> -->
+		<!-- 	<artifactId>authentic-interfaces-upisms-codegen</artifactId> -->
+		<!-- </dependency> -->
+        <dependency>
+			<groupId>${authentic.interfaces.groupid}</groupId>
+			<artifactId>authentic-interfaces-visa-authorization-codegen</artifactId>
+		</dependency>
+        <!-- <dependency> -->
+		<!-- 	<groupId>${authentic.interfaces.groupid}</groupId> -->
+		<!-- 	<artifactId>authentic-interfaces-visa-dps-codegen</artifactId> -->
+		<!-- </dependency> -->
+        <!-- <dependency> -->
+		<!-- 	<groupId>${authentic.interfaces.groupid}</groupId> -->
+		<!-- 	<artifactId>authentic-interfaces-visa-sms-codegen</artifactId> -->
+		<!-- </dependency> -->
+        <!-- <dependency> -->
+		<!-- 	<groupId>${authentic.interfaces.groupid}</groupId> -->
+		<!-- 	<artifactId>authentic-interfaces-vepts-actions</artifactId> -->
+		<!-- </dependency> -->
+  </dependencies>
+
+
+	<profiles>
+	
+		<profile>
+			<id>packages</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<batchfile>bin\_start.sh</batchfile>
+				<cassandra.enabled>false</cassandra.enabled>
+			</properties>
+		    <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>${maven-source-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+		</profile>
+	
+		<profile>
+			<id>server-layers</id>
+			<properties>
+				<cassandra.enabled>false</cassandra.enabled>
+			</properties>
+			<build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>${maven-source-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+		</profile>
+
+		<profile>
+			<id>rdbms-layers</id>
+			<build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>${maven-source-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+		</profile>
+
+		<profile>
+			<id>cassandra-layers</id>
+			<properties>
+				<cassandra.enabled>true</cassandra.enabled>
+			</properties>
+			<build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>${maven-source-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+		</profile>
+		
+		<profile>
+			<id>windows-layers</id>
+			<properties>
+				<batchfile>bin\start.bat</batchfile>
+			</properties>
+			<build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>${maven-source-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+		</profile>
+		
+		<profile>
+			<id>linux-layers</id>
+			<properties>
+				<batchfile>bin/start.sh</batchfile>
+			</properties>
+			<build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>${maven-source-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+		</profile>
+		
+	</profiles>
+
+</project>
